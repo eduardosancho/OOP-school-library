@@ -1,9 +1,8 @@
 class Person
-
   attr_reader :id
   attr_accessor :name, :age, :parent_permission
 
-  def initialize(name = "Unkown", age, parent_permission = true)
+  def initialize(age, name = "Unkown", parent_permission: true)
     @id = id
     @name = name
     @age = age
@@ -20,6 +19,6 @@ class Person
     false
   end
 
-  private :of_age?
+  private :is_of_age?
   public :can_use_services?
 end
