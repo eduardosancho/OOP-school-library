@@ -66,6 +66,17 @@ class App
     end
   end
 
+  def create_book
+    print "Title: "
+    book_title = gets.chomp
+    print "Author: "
+    book_author = gets.chomp
+
+    new_book = Book.new(book_title, book_author)
+    puts "Book created successfully" if new_book.instance_of?(Book)
+    books << new_book
+  end 
+
   def option_run(selection)
     case selection
     when 1
@@ -74,6 +85,8 @@ class App
       list_all_people()
     when 3
       create_person()
+    when 4 
+      create_book()
     else
       puts 'Wrong value. Please try again :)'
     end
