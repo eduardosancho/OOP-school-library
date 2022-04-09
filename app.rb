@@ -37,7 +37,7 @@ class App
 
     new_student = Student.new(student_age, student_name, parent_permission: student_permission)
     puts 'Person created succesfully' if new_student.instance_of?(Student)
-    people << new_student
+    people << new_student unless people.include?(new_student)
   end
 
   def create_teacher
@@ -50,7 +50,7 @@ class App
 
     new_teacher = Teacher.new(teacher_specialization, teacher_age, teacher_name)
     puts 'Person created succesfully' if new_teacher.instance_of?(Teacher)
-    people << new_teacher
+    people << new_teacher unless people.include?(new_teacher)
   end
 
   def create_person
@@ -74,7 +74,7 @@ class App
 
     new_book = Book.new(book_title, book_author)
     puts 'Book created successfully' if new_book.instance_of?(Book)
-    books << new_book
+    books << new_book unless books.include?(new_book)
   end
 
   def create_rental
@@ -90,10 +90,10 @@ class App
 
     print "Date: "
     rental_date = gets.chomp
-    
+
     new_rental = Rental.new(rental_date, selected_person, selected_book)
     puts 'Rental created successfully' if new_rental.instance_of?(Rental)
-    rentals << new_rental
+    rentals << new_rental unless rentals.include?(new_rental)
   end
 
   def option_run(selection)
