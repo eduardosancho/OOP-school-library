@@ -21,8 +21,8 @@ class App
 
   def list_all_people
     puts "\n"
-    @people.each do |person|
-      puts "#{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    @people.each_with_index do |person, index|
+      puts "#{index + 1} [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
 
@@ -77,6 +77,25 @@ class App
     books << new_book
   end
 
+  def create_rental
+    puts "\nSelect a book from the following list by number:"
+    list_all_books
+    selected_book_index = gets.chomp.to_i
+    selected_book = books[selected_book_index]
+
+    puts "\nSelect a person from the following list by number (not id):"
+    list_all_people
+    selected_person_index = gets.chomp.to_i
+    selected_person = people[selected_person_index]
+
+    print "Date: "
+    rental_date = gets.chomp
+    
+    new_rental = Rental.new(rental_date, selected_person, selected_book)
+    puts 'Rental created successfully' if new_rental.instance_of?(Rental)
+    rentals << new_rental
+  end
+
   def option_run(selection)
     case selection
     when 1
@@ -87,6 +106,8 @@ class App
       create_person
     when 4
       create_book
+    when 5
+      create_rental
     else
       puts 'Wrong value. Please try again :)'
     end
