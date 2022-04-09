@@ -19,10 +19,19 @@ class App
     end
   end
 
+  def list_all_people
+    puts "\n"
+    @people.each do |person|
+      puts "#{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+
   def option_run(selection)
     case selection
     when 1
       list_all_books()
+    when 2
+      list_all_people()
     else
       puts 'Wrong value. Please try again :)'
     end
