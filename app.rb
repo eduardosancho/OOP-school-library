@@ -81,12 +81,12 @@ class App
     puts "\nSelect a book from the following list by number:"
     list_all_books
     selected_book_index = gets.chomp.to_i
-    selected_book = books[selected_book_index]
+    selected_book = books[selected_book_index-1]
 
     puts "\nSelect a person from the following list by number (not id):"
     list_all_people
     selected_person_index = gets.chomp.to_i
-    selected_person = people[selected_person_index]
+    selected_person = people[selected_person_index-1]
 
     print "Date: "
     rental_date = gets.chomp
@@ -94,6 +94,19 @@ class App
     new_rental = Rental.new(rental_date, selected_person, selected_book)
     puts 'Rental created successfully' if new_rental.instance_of?(Rental)
     rentals << new_rental unless rentals.include?(new_rental)
+    selected_person.rentals << new_rental unless selected_person.rentals.include?(new_rental)
+    selected_book.rentals << new_rental unless selected_book.rentals.include?(new_rental)
+  end
+
+  def list_rentals_by_id
+    list_all_people
+    print "ID of person: "
+    selected_person_id = gets.chomp.to_i
+    selected_person = people.select {|person| person.id == selected_person_id}
+    puts "Rentals: " 
+    selected_person[0].rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: #{rental.book}, Person: #{rental.person}"
+    end
   end
 
   def option_run(selection)
@@ -108,6 +121,8 @@ class App
       create_book
     when 5
       create_rental
+    when 6
+      list_rentals_by_id
     else
       puts 'Wrong value. Please try again :)'
     end
