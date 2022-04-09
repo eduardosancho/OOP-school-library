@@ -12,9 +12,25 @@ class App
     @rentals = []
   end
 
+  def list_all_books
+    puts "\n"
+    @books.each_with_index do |book, index|
+      puts "#{index + 1} Title: #{book.title}, Author: #{book.author}"
+    end
+  end
+
+  def option_run(selection)
+    case selection
+    when 1
+      list_all_books()
+    else
+      puts 'Wrong value. Please try again :)'
+    end
+  end
+
   def run
+    puts "Welcome to School Library App!"
     loop do
-      puts "Welcome to School Library App!"
       puts "\nPlease choose an option by entering a number:"
       puts '1 - List all books'
       puts '2 - List all people'
@@ -26,6 +42,7 @@ class App
 
       selection = gets.chomp.to_i
       break if selection == 7
+      option_run(selection)
     end
   end
 end
