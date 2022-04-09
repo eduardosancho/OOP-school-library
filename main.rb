@@ -15,6 +15,7 @@ def main
 
     selection = gets.chomp.to_i
     break if selection == 7
+
     app.option_run(selection)
   end
 end
