@@ -105,7 +105,7 @@ class App
     selected_person = people.select { |person| person.id == selected_person_id }
     puts 'Rentals: '
     selected_person[0].rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book}, Person: #{rental.person}"
+      puts "Date: #{rental.date}, Book: #{rental.book.title}, Person: #{rental.person.name}"
     end
   end
 

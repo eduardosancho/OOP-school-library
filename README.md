@@ -4,7 +4,7 @@ Backend application to record what books are in the library and who borrows them
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 ## Preview
-![screenshot](./screenshot.png)
+![console app](./screenshot.gif)
 
 ## Built With
 
@@ -14,7 +14,7 @@ Backend application to record what books are in the library and who borrows them
 
 ## Live Demo (if available)
 
-[N/A](https://github.com/eduardosancho/decode_morse)
+[N/A](https://github.com/eduardosancho/OOP-school-library)
 
 
 ## Getting Started
@@ -39,22 +39,25 @@ Run the following command in your terminal to clone this repo to your local mach
 
 In the project directory you can run the following command to execute the code:
 ```bash
-> irb
+$ ruby main.rb
 ```
 
-and start playing by creating Person, Student, or Teacher instances.
+and start playing by creating Students, Teachers, Books, and Rentals.
 
 ### Run tests
 
 ```bash
+$ irb
+```
+ ```irb
 > sahar = Student.new(2, 22)
 ```
 
-```bash
+```irb
 > andres = Student.new(2, 22, 'andres', parent_permission: false)
 ```
 
-```bash
+```irb
 > eduardo = Student.new(2, 15, 'eduardo', parent_permission: false)
 > eduardo.can_use_services?
 ```
