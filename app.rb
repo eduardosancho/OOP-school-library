@@ -27,73 +27,73 @@ class App
   end
 
   def create_student
-    print "Age: "
+    print 'Age: '
     student_age = gets.chomp.to_i
-    print "Name: "
+    print 'Name: '
     student_name = gets.chomp
-    print "Has parent permission? [Y/N]: "
+    print 'Has parent permission? [Y/N]: '
     permission_response = gets.chomp
-    student_permission = permission_response == 'N' ? false : true
+    student_permission = permission_response != 'N'
 
     new_student = Student.new(student_age, student_name, parent_permission: student_permission)
-    puts "Person created succesfully" if new_student.instance_of?(Student)
+    puts 'Person created succesfully' if new_student.instance_of?(Student)
     people << new_student
   end
 
   def create_teacher
-    print "Age: "
+    print 'Age: '
     teacher_age = gets.chomp.to_i
-    print "Name: "
+    print 'Name: '
     teacher_name = gets.chomp
-    print "Specialization: "
+    print 'Specialization: '
     teacher_specialization = gets.chomp
 
     new_teacher = Teacher.new(teacher_specialization, teacher_age, teacher_name)
-    puts "Person created succesfully" if new_teacher.instance_of?(Teacher)
+    puts 'Person created succesfully' if new_teacher.instance_of?(Teacher)
     people << new_teacher
   end
 
   def create_person
-    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_selection = gets.chomp.to_i
     case person_selection
     when 1
-      create_student()
+      create_student
     when 2
-      create_teacher()
+      create_teacher
     else
       puts 'Wrong value. Please try again :)'
     end
   end
 
   def create_book
-    print "Title: "
+    print 'Title: '
     book_title = gets.chomp
-    print "Author: "
+    print 'Author: '
     book_author = gets.chomp
 
     new_book = Book.new(book_title, book_author)
-    puts "Book created successfully" if new_book.instance_of?(Book)
+    puts 'Book created successfully' if new_book.instance_of?(Book)
     books << new_book
-  end 
+  end
 
   def option_run(selection)
     case selection
     when 1
-      list_all_books()
+      list_all_books
     when 2
-      list_all_people()
+      list_all_people
     when 3
-      create_person()
-    when 4 
-      create_book()
+      create_person
+    when 4
+      create_book
     else
       puts 'Wrong value. Please try again :)'
     end
   end
 
   def run
-    puts "Welcome to School Library App!"
+    puts 'Welcome to School Library App!'
     loop do
       puts "\nPlease choose an option by entering a number:"
       puts '1 - List all books'
@@ -106,6 +106,7 @@ class App
 
       selection = gets.chomp.to_i
       break if selection == 7
+
       option_run(selection)
     end
   end
