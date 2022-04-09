@@ -81,14 +81,14 @@ class App
     puts "\nSelect a book from the following list by number:"
     list_all_books
     selected_book_index = gets.chomp.to_i
-    selected_book = books[selected_book_index-1]
+    selected_book = books[selected_book_index - 1]
 
     puts "\nSelect a person from the following list by number (not id):"
     list_all_people
     selected_person_index = gets.chomp.to_i
-    selected_person = people[selected_person_index-1]
+    selected_person = people[selected_person_index - 1]
 
-    print "Date: "
+    print 'Date: '
     rental_date = gets.chomp
 
     new_rental = Rental.new(rental_date, selected_person, selected_book)
@@ -100,10 +100,10 @@ class App
 
   def list_rentals_by_id
     list_all_people
-    print "ID of person: "
+    print 'ID of person: '
     selected_person_id = gets.chomp.to_i
-    selected_person = people.select {|person| person.id == selected_person_id}
-    puts "Rentals: " 
+    selected_person = people.select { |person| person.id == selected_person_id }
+    puts 'Rentals: '
     selected_person[0].rentals.each do |rental|
       puts "Date: #{rental.date}, Book: #{rental.book}, Person: #{rental.person}"
     end
