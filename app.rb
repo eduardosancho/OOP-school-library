@@ -26,12 +26,54 @@ class App
     end
   end
 
+  def create_student
+    print "Age: "
+    student_age = gets.chomp.to_i
+    print "Name: "
+    student_name = gets.chomp
+    print "Has parent permission? [Y/N]: "
+    permission_response = gets.chomp
+    student_permission = permission_response == 'N' ? false : true
+
+    new_student = Student.new(student_age, student_name, parent_permission: student_permission)
+    puts "Person created succesfully" if new_student.instance_of?(Student)
+    people << new_student
+  end
+
+  def create_teacher
+    print "Age: "
+    teacher_age = gets.chomp.to_i
+    print "Name: "
+    teacher_name = gets.chomp
+    print "Specialization: "
+    teacher_specialization = gets.chomp
+
+    new_teacher = Teacher.new(teacher_specialization, teacher_age, teacher_name)
+    puts "Person created succesfully" if new_teacher.instance_of?(Teacher)
+    people << new_teacher
+  end
+
+  def create_person
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    person_selection = gets.chomp.to_i
+    case person_selection
+    when 1
+      create_student()
+    when 2
+      create_teacher()
+    else
+      puts 'Wrong value. Please try again :)'
+    end
+  end
+
   def option_run(selection)
     case selection
     when 1
       list_all_books()
     when 2
       list_all_people()
+    when 3
+      create_person()
     else
       puts 'Wrong value. Please try again :)'
     end
